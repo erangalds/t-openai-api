@@ -1,3 +1,4 @@
 docker-compose.yml
 Dockerfile
 .env
+python-code/debug.log
