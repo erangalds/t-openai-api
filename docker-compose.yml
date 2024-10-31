@@ -1,0 +1,22 @@
+services:
+  python3.13:
+    build: 
+      context: .
+      args:
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - python-code:/project-code
+    container_name: openai-api-pylab
+    image: openai-api/py3.13
+    command: bash -c "chown -R erangalds:erangalds /project-code && tail -f /dev/null"
+    
+volumes:
+  python-code:
+    driver: local
+    driver_opts:
+      type: none
+      device: python-code
+      o: bind
+
